@@ -1,24 +1,21 @@
 import  { useState } from 'react';
 import { nanoid } from 'nanoid';
 import css from './Phonebook.module.css';
+const Phonebook = ({ onSubmitProp }) => {
+  const [id, setId] = useState('');
+  const [name, setName] = useState('');
+  const [number, setNumber] = useState('');
 
-
- const  Phonebook = ({ onSubmitProp }) => {
-  
-  const [id, setId] = useState ('');
-  const [name, setName] = useState ('');
-  const [number, setNumber] = useState ('');
- 
   const handleSubmit = e => {
     e.preventDefault();
     setId(nanoid());
     onSubmitProp(id, name, number);
     reset();
   };
-
- const reset = () => { setName (''); setNumber (''); 
+  const reset = () => {
+    setName('');
+    setNumber('');
   };
-  
     return (
       <form onSubmit={handleSubmit} className={css.Form}>
         <label htmlFor="InputId" className={css.Label}>
